@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Stream{% endblock %}
+
+{% block body %}
+    <h1>Stream</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ stream.id }}</td>
+        </tr>
+        <tr>
+            <th>Jeu</th>
+            <td>{{ stream.jeu.name }}</td>
+        </tr>
+        <tr>
+            <th>StartDate</th>
+            <td>{{ stream.startDate|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Url</th>
+            <td><a href="{{ stream.url }}">{{ stream.url }}</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_stream_index') }}">back to list</a>
+    <a href="{{ path('app_stream_edit', {'id': stream.id}) }}">edit</a>
+    {{ include('stream/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les streams de demain{% endblock %}
+
+{% block body %}
+    <h1>Les streams de demain</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Utilisateur</th>
+            <th>Jeu</th>
+            <th>URL</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for stream in streams %}
+            <tr>
+                <td>{{ stream.utilisateur.pseudo }}</td>
+                <td>{{ stream.jeu.name }}</td>
+                <td><a class="btn btn-primary" href="{{ stream.url }}">Accéder au stream</a></td>
+                <td>{{ stream.startDate|date('d/m/Y H:i') }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun stream prévu pour demain</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
